@@ -18,14 +18,14 @@ class Person {
         const hello = document.createElement('p');
         hello.innerHTML = (`Hello ${otherPerson.name}, I am ${this.name}!`)
         console.log("I'm here bbg!");
-        return hello.appendChild(sayHello);
+        return sayHello.appendChild(hello);
     }
   
     print_contact_info(){
       const info = document.createElement('p');
       info.innerHTML = (`${this.name}'s Email: ${this.email}.
             ${this.name}'s Phone Number: ${this.phone}`);
-      return friendsSection.appendChild(info);
+      return contactInfo.appendChild(info);
     }
   
     //will not be displaying on DOM

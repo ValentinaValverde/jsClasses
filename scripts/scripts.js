@@ -1,14 +1,8 @@
 //Below are all the HTML elements
-const sonnyInfo = document.getElementById('sonnyInfo');
-const jordanInfo = document.getElementById('jordanInfo');
-
-const sonnyGreet = document.getElementById('sonnyGreet');
-const jordanGreet = document.getElementById('jordanGreet');
-
-const sonnyContact = document.getElementById('sonnyContact');
-const jordanContact = document.getElementById('jordanContact');
-
+const sayHello = document.getElementById('sayHello');
+const contactInfo =  document.getElementById('contactInfo');
 const friendsSection = document.getElementById('friendsSection');
+
 
 //Person work:
 class Person {
@@ -21,27 +15,32 @@ class Person {
     }
   
     greet(otherPerson) {
-        console.log(`Hello ${otherPerson.name}, I am ${this.name}!`);
+        const hello = document.createElement('p');
+        hello.innerHTML = (`Hello ${otherPerson.name}, I am ${this.name}!`)
+        console.log("I'm here bbg!");
+        return hello.appendChild(sayHello);
     }
   
     print_contact_info(){
-      console.log(this.name + "'s Email: ", this.email);
-      console.log(this.name + "'s Phone Number: ", this.phone)
+      const info = document.createElement('p');
+      info.innerHTML = (`${this.name}'s Email: ${this.email}.
+            ${this.name}'s Phone Number: ${this.phone}`);
+      return friendsSection.appendChild(info);
     }
   
+    //will not be displaying on DOM
     add_friend(otherPerson){
         console.log(this.friends.push(otherPerson));
     };
   
+    //will not be displaying on DOM
     num_friends(){
       console.log(this.friends.length);
     }
   
     list_friends(){
       this.friends.map(x => {
-        // create an el
         const friends = document.createElement('p');
-
         friends.innerHTML = (`${this.name}'s Friends: ${x.name}`);
         return friendsSection.appendChild(friends);
       })
@@ -50,14 +49,12 @@ class Person {
   
 //Sonny work:
 const Sonny = new Person('Sonny');
-  
 Sonny.email = 'sonny@hotmail.com';
 Sonny.phone = '483-485-4948';
   
 // console.log("Name: ", Sonny.name);
 // console.log(Sonny);
   
-
 
 //Jordan work:
 const Jordan = new Person('Jordan');
@@ -68,27 +65,31 @@ Jordan.phone = '495-586-3456';
 // console.log(Jordan);
   
   
-//They're gonna be friends :)
-// Sonny.greet(Jordan);
-// Jordan.greet(Sonny);
+//They meet...
+Sonny.greet(Jordan);
+Jordan.greet(Sonny);
   
-// Sonny.print_contact_info();
-// Jordan.print_contact_info();
+//They exchange contact info!
+Sonny.print_contact_info();
+Jordan.print_contact_info();
   
-  
+//They're friends!
 Sonny.add_friend(Jordan);
 Jordan.add_friend(Sonny);
   
+//They only have each other ;)
 Sonny.num_friends();
 Jordan.num_friends();
 
+//They list their friends AHAHAHHAHHHH
 Sonny.list_friends();
 Jordan.list_friends();
   
   
   
   
-  
+//what's the point
+
 //Vehicle work:
 // class vehicle{
 //   constructor(make, model, year){
@@ -104,5 +105,3 @@ Jordan.list_friends();
 // const car = new vehicle('VW', 'GTI', 2018)
 // console.log(car);
 // car.print_info();
-  
-  
